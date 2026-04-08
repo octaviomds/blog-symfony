@@ -23,7 +23,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'blog_show')]
+    #[Route('/{id}', name: 'blog_show')]
     public function show(Article $article): Response
     {
         return $this->render('blog/show.html.twig', [
@@ -63,7 +63,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/', name: 'blog_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'blog_delete', methods: ['POST'])]
     public function delete(Article $article, EntityManagerInterface $em): Response
     {
         $em->remove($article);
