@@ -1,9 +1,12 @@
-<!DOCTYPE html>
+{% extends 'base.html.twig' %}
 
+{% block title %}Administration{% endblock %}
+
+{% block body %}
 <div class="row mt-4">
     <div class="col-12">
         <h1 class="mb-4">Panneau d'Administration</h1>
-
+        
         <table class="table table-striped">
             <thead class="table-dark">
                 <tr>
@@ -23,7 +26,7 @@
                         <td>{{ article.datePublication|date('d/m/Y H:i') }}</td>
                         <td>
                             <a href="{{ path('blog_show', {id: article.id}) }}" class="btn btn-sm btn-info">Voir</a>
-                            <form method="post" action="{{ path('blog_delete', {id: article.id}) }}" style="display:inline;"
+                            <form method="post" action="{{ path('blog_delete', {id: article.id}) }}" style="display:inline;" 
                                   onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
                                 <button type="submit" class="btn btn-sm btn-danger">Supprimer</button>
                             </form>
@@ -35,4 +38,3 @@
     </div>
 </div>
 {% endblock %}
-</html>
