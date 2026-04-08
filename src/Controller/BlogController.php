@@ -23,7 +23,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/article/{id}', name: 'blog_show')]
+    #[Route('/}', name: 'blog_show')]
     public function show(Article $article): Response
     {
         return $this->render('blog/show.html.twig', [
@@ -31,7 +31,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/nouveau', name: 'blog_new')]
+    #[Route('/', name: 'blog_new')]
     public function new(Request $request, EntityManagerInterface $em): Response
     {
         $article = new Article();
@@ -52,7 +52,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/admin', name: 'blog_admin')]
+    #[Route('/', name: 'blog_admin')]
     public function admin(EntityManagerInterface $em): Response
     {
         $articles = $em->getRepository(Article::class)
@@ -63,7 +63,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/supprimer/{id}', name: 'blog_delete', methods: ['POST'])]
+    #[Route('/', name: 'blog_delete', methods: ['POST'])]
     public function delete(Article $article, EntityManagerInterface $em): Response
     {
         $em->remove($article);
