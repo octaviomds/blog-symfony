@@ -1,38 +1,37 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mon Blog Symfony{% endblock %}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>{% block title %}MonSite{% endblock %}</title>
     <style>
-        body { padding-top: 60px; }
-        .article-card { margin-bottom: 20px; transition: transform 0.2s; }
-        .article-card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; color: #333; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid #eee; }
+        nav .logo { font-size: 20px; font-weight: bold; }
+        nav a { margin-left: 20px; text-decoration: none; color: #555; font-size: 14px; }
+        nav a:hover { color: #185FA5; }
+        .footer { text-align: center; padding: 24px; border-top: 1px solid #eee; font-size: 13px; color: #999; margin-top: 40px; }
     </style>
+    {% block stylesheets %}{% endblock %}
 </head>
 <body>
-
     <nav>
-        <span class="logo">MonBlog</span>
+        <span class="logo">MonSite</span>
         <div>
             <a href="{{ path('app_home') }}">Accueil</a>
             <a href="#">Articles</a>
             <a href="#">Contact</a>
             <a href="#">Connexion</a>
         </div>
-    </nav>  
- <div class="container">  
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success alert-dismissible fade show mt-3">
-                {{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        {% endfor %}
+    </nav>
 
-        {% block body %}{% endblock %}
+    {% block body %}{% endblock %}
+
+    <div class="footer">
+        &copy; {{ "now"|date("Y") }} MonSite — Propulsé par Symfony
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block javascripts %}{% endblock %}
 </body>
 </html>
