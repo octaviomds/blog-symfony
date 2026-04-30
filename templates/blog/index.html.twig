@@ -1,34 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil - Blog{% endblock %}
+{% block title %}Accueil — MonBlog{% endblock %}
+
+{% block stylesheets %}
+<style>
+    .hero { padding: 64px 32px; text-align: center; border-bottom: 1px solid #eee; }
+    .hero h1 { font-size: 36px; font-weight: bold; margin-bottom: 16px; }
+    .hero p { font-size: 16px; color: #666; max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }
+    .btn { display: inline-block; padding: 10px 24px; border-radius: 8px; font-size: 14px; text-decoration: none; border: 1px solid #ccc; color: #333; margin: 0 6px; }
+    .btn-primary { background: #185FA5; color: white; border-color: #185FA5; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 40px 32px; }
+    .card { border: 1px solid #eee; border-radius: 12px; padding: 20px; }
+    .card h3 { font-size: 16px; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: #666; line-height: 1.6; }
+</style>
+{% endblock %}
 
 {% block body %}
-<div class="row mt-4">
-    <div class="col-12">
-        <h1 class="mb-4">Articles du Blog</h1>
-        
-        {% if articles is empty %}
-            <div class="alert alert-info">
-                Aucun article pour le moment. <a href="{{ path('blog_new') }}">Créez le premier !</a>
-            </div>
-        {% else %}
-            {% for article in articles %}
-                <div class="card article-card">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <a href="{{ path('blog_show', {id: article.id}) }}" class="text-decoration-none">
-                                {{ article.titre }}
-                            </a>
-                        </h2>
-                        <p class="text-muted">
-                            Par {{ article.auteur }} - {{ article.datePublication|date('d/m/Y à H:i') }}
-                        </p>
-                        <p class="card-text">{{ article.contenu|slice(0, 200) }}...</p>
-                        <a href="{{ path('blog_show', {id: article.id}) }}" class="btn btn-primary">Lire la suite</a>
-                    </div>
-                </div>
-            {% endfor %}
-        {% endif %}
+<div class="hero">
+    <h1>{{ title }}</h1>
+    <p>Un projet Symfony moderne, rapide et bien structuré. Prêt à être personnalisé.</p>
+    <a href="#" class="btn btn-primary">Découvrir</a>
+    <a href="#" class="btn">En savoir plus</a>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <h3>Rapide</h3>
+        <p>Symfony est optimisé pour des performances maximales en production.</p>
+    </div>
+    <div class="card">
+        <h3>Sécurisé</h3>
+        <p>Protection intégrée contre les failles web les plus courantes.</p>
+    </div>
+    <div class="card">
+        <h3>Modulaire</h3>
+        <p>Ajoute uniquement les bundles dont tu as besoin avec Composer.</p>
     </div>
 </div>
 {% endblock %}
