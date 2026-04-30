@@ -12,18 +12,17 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ path('blog_index') }}">Mon Blog</a>
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="{{ path('blog_index') }}">Accueil</a>
-                <a class="nav-link" href="{{ path('blog_new') }}">Nouvel Article</a>
-                <a class="nav-link" href="{{ path('blog_admin') }}">Admin</a>
-            </div>
-        </div>
-    </nav>
 
-    <div class="container">
+    <nav>
+        <span class="logo">MonBlog</span>
+        <div>
+            <a href="{{ path('app_home') }}">Accueil</a>
+            <a href="#">Articles</a>
+            <a href="#">Contact</a>
+            <a href="#">Connexion</a>
+        </div>
+    </nav>  
+ <div class="container">  
         {% for message in app.flashes('success') %}
             <div class="alert alert-success alert-dismissible fade show mt-3">
                 {{ message }}
